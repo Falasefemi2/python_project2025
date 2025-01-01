@@ -2,13 +2,21 @@
     "21288": {
         "name": "Falase Femi Samuel",
         "grades": {
-            "Mathematics": 67.0
+            "Mathematics": 67.0,
+            "English Langauge": 67.0,
+            "Physics": 87.0,
+            "Biology": 98.0,
+            "Chemistry": 87.0
         }
     },
     "65523": {
         "name": "Agbeje Omotayo Yusuf",
         "grades": {
-            "Mathematics": 45.0
+            "Mathematics": 45.0,
+            "English Language": 54.0,
+            "Physics": 76.0,
+            "Biology": 76.0,
+            "Chemistry": 55.0
         }
     }
 }

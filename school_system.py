@@ -102,7 +102,38 @@ def school_system():
             return
         students[student_id]["grades"][subject] = grade
         print(f"Grade for {subject} added successfully!")
+    
+    def add_multiple_grade():
+        # Add Multiple grade
+        student_id = input("Enter student ID: ").strip()
+        if not student_id:
+            print("Error: Student ID cannot be empty")
+            return
         
+        if student_id not in students:
+            print("Error: Student ID not found")
+            return
+        
+        print("Enter grades in this format 'subject:grade'. Type 'done' to finish.")
+        while True:
+            entry = input("Enter subject and grade: ").strip()
+            if entry.lower() == "done":
+                break
+            
+            try:
+                subject, grade = entry.split(":")
+                subject = subject.strip()
+                grade = float(grade.strip())
+                
+                if grade < 0 or grade > 100:
+                    print(f"Error: Grade for {subject} should be between 0-100")
+                    continue
+                
+                students[student_id]["grades"][subject] = grade
+                print(f"Grade for {subject} added successfully")
+                
+            except ValueError:
+                print("Invalid input")        
     
     try:
         while True:
@@ -110,7 +141,8 @@ def school_system():
             print("1. Add Student")
             print("2. Save Data")
             print("3. Add Grade")
-            print("4. Exit")
+            print("4. Add Multiple grade")
+            print("5. Exit")
             
             choice = input("Enter your choice: ").strip()
             
@@ -121,6 +153,8 @@ def school_system():
             elif choice == "3":
                 add_grade()
             elif choice == "4":
+                add_multiple_grade()
+            elif choice == "5":
                 print("Exit Program")
                 break
             else:
