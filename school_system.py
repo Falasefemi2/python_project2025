@@ -133,8 +133,25 @@ def school_system():
                 print(f"Grade for {subject} added successfully")
                 
             except ValueError:
-                print("Invalid input")        
+                print("Invalid input")  
     
+    def view_student_details():
+        # View student details
+        student_id = input("Enter student ID: ").strip()  
+        if not student_id:
+            print("Error: Student ID cannot be empty")
+            return
+        if student_id not in students:
+            print("Error: Student ID not found")
+            return
+        
+        student = students[student_id] 
+        print(f"Student Name: {student["name"]}")
+        print(f"Student ID: {student_id}")
+        if student["grades"]:
+            print("Grades: ")
+            for subject,grade in student["grades"].items():
+                print(f"{subject}: {grade}")    
     try:
         while True:
             print("\n===Welcome to Femi School===")
@@ -142,7 +159,8 @@ def school_system():
             print("2. Save Data")
             print("3. Add Grade")
             print("4. Add Multiple grade")
-            print("5. Exit")
+            print("5. View Student Details")
+            print("6. Exit")
             
             choice = input("Enter your choice: ").strip()
             
@@ -155,6 +173,8 @@ def school_system():
             elif choice == "4":
                 add_multiple_grade()
             elif choice == "5":
+                view_student_details()
+            elif choice == "6":
                 print("Exit Program")
                 break
             else:
