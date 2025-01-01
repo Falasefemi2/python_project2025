@@ -164,7 +164,35 @@ def school_system():
             return
         del students[student_id]
         print(f"Student with {student_id} deleted from system")
+    
+    def view_all_students():
+        # Vie all student in system
+        if not students:
+            print("No student to be shown")
+            return
+        print("\nAll Student")
+        for student_id, student in students.items():
+            print(f"Student ID: {student_id} Name: {student['name']}")
+            
+    def calculate_average():
+        # Calculate student average
+        student_id = input("Enter student ID: ").strip()
+        if not student_id:
+            print("Error: Student ID cannot be empty")
+            return
+        if student_id not in students:
+            print("Error: Student ID not found")
+            return
         
+        student = students[student_id]
+        if not student["grades"]:
+            print("No grades to show")
+            return
+        
+        total_average = sum(student["grades"].values())
+        average_grade = total_average / len(student['grades'])
+        print(f"Average grade for {student["name"]}: {average_grade:.2f}") 
+               
     try:
         while True:
             print("\n===Welcome to Femi School===")
@@ -174,7 +202,9 @@ def school_system():
             print("4. Add Multiple grade")
             print("5. View Student Details")
             print("6. Delete Student Details")
-            print("7. Exit")
+            print("7. View All Students")
+            print("8. Calculate average")
+            print("9. Exit")
             
             choice = input("Enter your choice: ").strip()
             
@@ -191,6 +221,10 @@ def school_system():
             elif choice == "6":
                 delete_student()
             elif choice == "7":
+                view_all_students()
+            elif choice == "8":
+                calculate_average()
+            elif choice == "9":
                 print("Exit Program")
                 break
             else:
