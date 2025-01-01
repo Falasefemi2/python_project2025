@@ -1,6 +1,8 @@
 import random
 import re
 import json 
+import matplotlib.pyplot as plt
+from openpyxl import Workbook
 
 def school_system():
     """_summary_
