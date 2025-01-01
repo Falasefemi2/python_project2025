@@ -194,7 +194,56 @@ def school_system():
         total_average = sum(student["grades"].values())
         average_grade = total_average / len(student['grades'])
         print(f"Average grade for {student["name"]}: {average_grade:.2f}") 
-               
+        
+    def visualize_grade():
+        # Visualize grades of a specific student
+        student_id = input("Enter student ID: ").strip()
+        if not student_id:
+            print("Student ID cannot be empty")
+            return
+        if student_id not in students:
+            print("Student ID not found")
+            return
+        
+        student = students[student_id]
+        if not student["grades"]:
+            print("No grades available for student")
+            return
+        
+        subjects = list(student["grades"].keys())
+        grades = list(student["grades"].values())
+        
+        plt.bar(subjects, grades, color="red")
+        plt.title(f"Grades for {student["name"]}")
+        plt.xlabel('Subjects')
+        plt.ylabel("Grades")
+        plt.ylim(0, 100)
+        plt.show()
+        
+    def export_to_excel():
+        if not students:
+            print("No student data to export")
+            return
+
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Students Data"
+
+        # Add headers
+        ws.append(["Student ID", "Name", "Subjects", "Grades"])
+
+        # Add student data
+        for student_id, student in students.items():
+            grades = ", ".join([f"{sub}:{gr}" for sub, gr in student["grades"].items()])
+            ws.append([student_id, student["name"], grades])
+
+        # Save file
+        filename = "students_data.xlsx"
+        wb.save(filename)
+        print(f"Data exported successfully to {filename}")
+        
+            
+                       
     try:
         while True:
             print("\n===Welcome to Femi School===")
@@ -206,7 +255,9 @@ def school_system():
             print("6. Delete Student Details")
             print("7. View All Students")
             print("8. Calculate average")
-            print("9. Exit")
+            print("9. Visualize Data")
+            print("10. Export data")
+            print("11. Exit")
             
             choice = input("Enter your choice: ").strip()
             
@@ -227,6 +278,10 @@ def school_system():
             elif choice == "8":
                 calculate_average()
             elif choice == "9":
+                visualize_grade()
+            elif choice == "10":
+                export_to_excel()
+            elif choice == "11":
                 print("Exit Program")
                 break
             else:
