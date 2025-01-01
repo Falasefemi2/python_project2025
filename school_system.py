@@ -98,7 +98,6 @@ def school_system():
                 print("Invalid Input")
     except Exception as e:
         print(f"Unexpected Error {e}")
-        
-21288
+     
 if __name__ == "__main__":
     school_system()
