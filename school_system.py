@@ -151,7 +151,20 @@ def school_system():
         if student["grades"]:
             print("Grades: ")
             for subject,grade in student["grades"].items():
-                print(f"{subject}: {grade}")    
+                print(f"{subject}: {grade}")  
+                
+    def delete_student():
+        # Delete student details
+        student_id = input("Enter student ID: ").strip()
+        if not student_id:
+            print("Student ID cannot be empty")
+            return
+        if student_id not in students:
+            print("Error: Student ID not found") 
+            return
+        del students[student_id]
+        print(f"Student with {student_id} deleted from system")
+        
     try:
         while True:
             print("\n===Welcome to Femi School===")
@@ -160,7 +173,8 @@ def school_system():
             print("3. Add Grade")
             print("4. Add Multiple grade")
             print("5. View Student Details")
-            print("6. Exit")
+            print("6. Delete Student Details")
+            print("7. Exit")
             
             choice = input("Enter your choice: ").strip()
             
@@ -175,6 +189,8 @@ def school_system():
             elif choice == "5":
                 view_student_details()
             elif choice == "6":
+                delete_student()
+            elif choice == "7":
                 print("Exit Program")
                 break
             else:
