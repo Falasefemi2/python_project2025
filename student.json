@@ -1,10 +1,14 @@
 {
     "21288": {
         "name": "Falase Femi Samuel",
-        "grades": {}
+        "grades": {
+            "Mathematics": 67.0
+        }
     },
     "65523": {
         "name": "Agbeje Omotayo Yusuf",
-        "grades": {}
+        "grades": {
+            "Mathematics": 45.0
+        }
     }
 }

@@ -76,6 +76,32 @@ def school_system():
         print("\nStudent Added Successfully")
         print(f"Student Name: {name}")
         print(f"Student ID: {student_id}")
+    
+    def add_grade():
+        # Add Student grade
+        student_id = input("Enter student ID: ").strip()
+        if not student_id:
+            print("Error: Student ID cannot be empty")
+            return
+        if student_id not in students:
+            print("Error: Student ID not found")
+            return
+        
+        subject = input("Enter Subject name: ").strip()
+        if not subject:
+            print("Error: Subject name cannot be empty")
+            return
+        
+        try:
+            grade = float(input(f"Enter grade for {subject}: ").strip())
+            if grade < 0 or grade > 100:
+                print("Error: Grade should be between 0-100")
+                return
+        except ValueError:
+            print("Invalid input. Please input a number")
+            return
+        students[student_id]["grades"][subject] = grade
+        print(f"Grade for {subject} added successfully!")
         
     
     try:
@@ -83,7 +109,8 @@ def school_system():
             print("\n===Welcome to Femi School===")
             print("1. Add Student")
             print("2. Save Data")
-            print("3. Exit")
+            print("3. Add Grade")
+            print("4. Exit")
             
             choice = input("Enter your choice: ").strip()
             
@@ -92,6 +119,8 @@ def school_system():
             elif choice == "2":
                 save_data()
             elif choice == "3":
+                add_grade()
+            elif choice == "4":
                 print("Exit Program")
                 break
             else:
