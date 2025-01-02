@@ -18,9 +18,9 @@
     "31497": {
         "title": "Ice and Fire",
         "author": "George Martin",
-        "isbn": "345",
+        "isbn": "200",
         "genre": "Fiction",
         "copies": 234,
-        "location": "Middle Shelf"
+        "location": "Top Shelf"
     }
 }

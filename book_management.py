@@ -76,21 +76,84 @@ def book_system():
             print(f"Book '{title}' added successfully with ID {book_id}.")
         except Exception as e:
             print(f"Error while registering book: {e}")
+            
+    def edit_book():
+        # Edit book details
+        book_id = input("Enter book ID: ").strip()
+        if not book_id:
+            print("Error: Book ID cannot be empty.")
+            return
+        
+        if book_id not in books:
+            print("Error: Book ID not found.")
+            return
+        
+        book = books[book_id]
+        print("\nCurrent Book details: ")
+        print(f"Title: {book['title']}")
+        print(f"Author: {book['author']}")
+        print(f"ISBN: {book['isbn']}")
+        print(f"Genre: {book['genre']}")
+        print(f"Copies: {book['copies']}")
+        print(f"Location: {book['location']}")
+        
+        print("\nEnter new details (leave empty to retain current value): ")
+        new_title = input(f"Title: [{book['title']}]: ").strip() or book['title']
+        new_author = input(f"Author: [{book['author']}]: ").strip() or book['author']
+        new_isbn = input(f"ISBN: [{book['isbn']}]: ").strip() or book['isbn']
+        new_genre = input(f"Genre: [{book['genre']}]: ").strip() or book['genre']
+        
+        # Validate copies input
+        new_copies = input(f"Copies: [{book['copies']}]: ").strip() 
+        if new_copies.isdigit() and int(new_copies) < 0:
+            new_copies = int(new_copies)
+        else:
+            print("Invalid input for copies. Keeping the current value.")
+            new_copies = book['copies']
+        
+        # Predefined locations
+        locations = ["Top Shelf", "Middle Shelf", "Bottom Shelf"]
+        print("Choose a location (press Enter to keep the current value):")
+        for idx, loc in enumerate(locations, 1):
+            print(f"{idx}. {loc}")
+        location_choice = input(f"Location [{book['location']}]: ").strip()
+        if location_choice.isdigit() and int(location_choice) in range(1, len(locations) + 1):
+            new_location = locations[int(location_choice) - 1]
+        else:
+            print("Invalid input for location. Keeping the current value.")
+            new_location = book['location']
+            
+        books[book_id] = {
+            "title": new_title,
+            "author": new_author,
+            "isbn": new_isbn,
+            "genre": new_genre,
+            "copies": new_copies,
+            "location": new_location,
+        }
+        
+        print(f"Book details updated successfully for ID {book_id}.")
+
+
+        
 
     def main_menu():
         """Display the main menu"""
         while True:
             print("\nBook Management System")
             print("1. Add Book")
-            print("2. Save Data")
-            print("3. Exit")
+            print("2. Edit Book")
+            print("3. Save Data")
+            print("4. Exit")
             choice = input("Enter your choice: ").strip()
 
             if choice == "1":
                 register_book()
             elif choice == "2":
-                save_data()
+                edit_book()
             elif choice == "3":
+                save_data()
+            elif choice == "4":
                 print("Exiting...")
                 break
             else:
