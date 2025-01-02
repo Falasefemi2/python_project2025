@@ -1,0 +1,26 @@
+{
+    "90691": {
+        "title": "Harry Potter",
+        "author": "Prof danny",
+        "isbn": "234",
+        "genre": "Fiction",
+        "copies": 34,
+        "location": "Top Shelf"
+    },
+    "90036": {
+        "title": "House of dragon",
+        "author": "John snow",
+        "isbn": "345",
+        "genre": "Fiction",
+        "copies": 23,
+        "location": "Down shelf"
+    },
+    "31497": {
+        "title": "Ice and Fire",
+        "author": "George Martin",
+        "isbn": "345",
+        "genre": "Fiction",
+        "copies": 234,
+        "location": "Middle Shelf"
+    }
+}
