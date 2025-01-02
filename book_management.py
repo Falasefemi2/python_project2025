@@ -133,6 +133,84 @@ def book_system():
         }
         
         print(f"Book details updated successfully for ID {book_id}.")
+        
+    def delete_book():
+        # Delete book from system
+        book_id = input("Enter book ID: ").strip()
+        if book_id not in books:
+            print("Error: Book ID not found.")
+            return
+        
+        del books[book_id]
+        print(f"Book with ID: {book_id} deleted successfully.")
+    
+    def search_book():
+        # Search for a book by title or author
+        print("\nSearch book by Title or Author: ")
+        entry = input("Enter book title or author: ").strip().lower()
+
+        if not entry:
+            print("Error: Search term cannot be empty.")
+            return
+
+        matches = []
+        for idx, book in enumerate(books.values(), start=1):
+            if entry in book['title'].lower() or entry in book['author'].lower():
+                matches.append((idx, book))
+
+        if not matches:
+            print("No books found matching the search term.")
+            return
+
+        print("\nMatching Books:")
+        for idx, book in matches:
+            print(f"{idx}. {book['title']} by {book['author']}")
+
+        # Ask the user to select a book or go back to the main menu
+        try:
+            choice = int(input("\nEnter the number of the book to view details or 0 to return to main menu: "))
+            if choice == 0:
+                print("Returning to the main menu.")
+                return
+
+            # Display the selected book's details
+            selected_book = matches[choice - 1][1]
+            print("\nBook Details:")
+            print(f"Title: {selected_book['title']}")
+            print(f"Author: {selected_book['author']}")
+            print(f"ISBN: {selected_book['isbn']}")
+            print(f"Genre: {selected_book['genre']}")
+            print(f"Copies Available: {selected_book['copies']}")
+            print(f"Location: {selected_book['location']}")
+
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+        except IndexError:
+            print("Invalid book selection. Please try again.")
+            
+    def borrow_book():
+        # Borrow a book
+        book_id = input("Enter book ID: ").strip()
+        
+        if book_id not in books:
+            print("Error: Book ID not found.")
+            return
+        
+        book = books[book_id]
+        
+        if book['copies'] > 0:
+            # Borrow book and reduce it by 1
+            book['copies'] -= 1
+            print(f"Book borrowed successfully: {book['title']} by {book['author']}")
+            print(f"Remaining copies: {book['copies'] - 1}")
+        
+            # Save the updated data (if necessary)
+            save_data()  # Ensure you save after borrowing
+        else:
+            print("Error: No copies available for borrowing.")
+
+
+                            
 
 
         
@@ -144,7 +222,10 @@ def book_system():
             print("1. Add Book")
             print("2. Edit Book")
             print("3. Save Data")
-            print("4. Exit")
+            print("4. Delete Book")
+            print("5. Search Book")
+            print("6. Borrow Book")
+            print("7. Exit")
             choice = input("Enter your choice: ").strip()
 
             if choice == "1":
@@ -154,6 +235,12 @@ def book_system():
             elif choice == "3":
                 save_data()
             elif choice == "4":
+                delete_book()
+            elif choice == "5":
+                search_book()
+            elif choice == "6":
+                borrow_book()
+            elif choice == "7":
                 print("Exiting...")
                 break
             else:

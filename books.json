@@ -1,12 +1,4 @@
 {
-    "90691": {
-        "title": "Harry Potter",
-        "author": "Prof danny",
-        "isbn": "234",
-        "genre": "Fiction",
-        "copies": 34,
-        "location": "Top Shelf"
-    },
     "90036": {
         "title": "House of dragon",
         "author": "John snow",
@@ -20,7 +12,15 @@
         "author": "George Martin",
         "isbn": "200",
         "genre": "Fiction",
-        "copies": 234,
+        "copies": 232,
         "location": "Top Shelf"
+    },
+    "55005": {
+        "title": "Naruto",
+        "author": "Ishiago",
+        "isbn": "211",
+        "genre": "Anime",
+        "copies": 11,
+        "location": "Middle Shelf"
     }
 }
