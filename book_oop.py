@@ -175,5 +175,26 @@ class BookManagementSystem:
         print("\nMatching Books")
         for idx, book in matches:
             print(f"{idx}. {book['title']}, {book['author']}") 
+    
+    def borrow_book(self):
+        """Borrow book"""
+        book_id = input("Enter book ID: ").strip()
+        if not book_id:
+            print("Book ID cannot be empty")
+            return
+        
+        if book_id not in self.books:
+            print("Book ID not found")
+            return
+        
+        book = self.books[book_id]
+        
+        if book['copies'] > 0:
+            book['copies'] -= 1
+            print(f"Book borrowed successfully: {book['title']} bt {book['author']}")  
+            print(f"Remaining copies left: {book['copies'] - 1}")
             
+            self.save_data()
+        else:
+            print("Error: No copies to borrow")          
         
