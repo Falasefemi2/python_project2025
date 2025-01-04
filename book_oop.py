@@ -132,5 +132,18 @@ class BookManagementSystem:
         }
         print(f"Book details updated successfully for ID {book_id}.")
         
+    def delete_book(self):
+        """Delete book"""
+        book_id = input("Enter book ID: ").strip()
+        if not book_id:
+            print("Book ID cannot be empty")
+            return
+        if book_id not in self.books:
+            print("Book ID cannot be found")
+            return
+        
+        del self.books[book_id]
+        print(f"Book with ID: {book_id} deleted successfully.")
+        
             
         
