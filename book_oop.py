@@ -18,8 +18,8 @@ class BookManagementSystem:
             print("No data file found. Starting with an empty library.")
         except json.JSONDecodeError:
             print("Error: File might be corrupted.")
-        except Exception as e:
-            print(f"Unexpected error while loading data: {e}")
+        except (OSError, IOError) as e:
+            print(f"File error while loading data: {e}")
     
     def save_data(self):
         """Save data to json file"""
@@ -27,8 +27,8 @@ class BookManagementSystem:
             with open(self.file_name, "w", encoding="utf-8") as file:
                 json.dump(self.books, file, indent=4)
             print("Data saved successfully.")
-        except Exception as e:
-            print(f"Unexpected error while saving data: {e}")
+        except (OSError, IOError) as e:
+            print(f"File error while saving data: {e}")
 
     
     def generate_id(self):
@@ -76,6 +76,8 @@ class BookManagementSystem:
             
             print("\nBook Added successfully")
             print(f"Book with {book_id} added successfully")
+        except IOError as e:
+            print(f"I/O error while registering book: {e}")
         except Exception as e:
             print(f"Error while registering book: {e}")
     
