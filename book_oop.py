@@ -149,33 +149,33 @@ class BookManagementSystem:
     
     def search_book(self):
         """Search Book From system"""
-        book_id = input("Enter book ID: ").strip()
-        if not book_id:
-            print("Book ID cannot be empty")
-            return
-        if book_id not in self.books:
-            print("Book ID not found")
-            return
+        print("\nSearch by title or author:")
+        search_term = input("Enter search term: ").strip().lower()
         
-        print("\nEnter title or author of book: ")
-        entry = input("Enter search option: (Title or Author): ").strip()
-        if not entry:
-            print("Cannot be empty")
+        if not search_term:
+            print("Search term cannot be empty")
             return
         
         matches = []
-        for idx, book in enumerate(self.books.values(), start=1):
-            if entry in book['title'].lower() or entry in book['author'].lower():
-                matches.append((idx, book))       
+        for book_id, book in self.books.items():
+            if (search_term in book['title'].lower() or 
+                search_term in book['author'].lower()):
+                matches.append((book_id, book))
         
         if not matches:
-            print("Book not found")
+            print("No books found matching your search.")
             return
         
-        print("\nMatching Books")
-        for idx, book in matches:
-            print(f"{idx}. {book['title']}, {book['author']}") 
-    
+        print("\nMatching Books:")
+        for book_id, book in matches:
+            print(f"\nBook ID: {book_id}")
+            print(f"Title: {book['title']}")
+            print(f"Author: {book['author']}")
+            print(f"Genre: {book['genre']}")
+            print(f"Copies Available: {book['copies']}")
+            print(f"Location: {book['location']}")
+            print("-" * 40)    
+            
     def borrow_book(self):
         """Borrow book"""
         book_id = input("Enter book ID: ").strip()
@@ -196,5 +196,37 @@ class BookManagementSystem:
             
             self.save_data()
         else:
-            print("Error: No copies to borrow")          
-        
+            print("Error: No copies to borrow")        
+    
+    
+    def main_menu(self):
+        """Display the main menu"""
+        while True:
+            print("\nBook Management System")
+            print("1. Add Book")
+            print("2. Edit Book")
+            print("3. Save Data")
+            print("4. Delete Book")
+            print("5. Search Book")
+            print("6. Borrow Book")
+            print("7. Exit")
+            choice = input("Enter your choice: ").strip()
+            
+            if choice ==  "1":
+                self.register_book()
+            elif choice == "2":
+                self.edit_book()
+            elif choice == "3":
+                self.save_data()
+            elif choice == "4":
+                self.delete_book()
+            elif choice == "5":
+                self.search_book()
+            elif choice == "6":
+                self.borrow_book()
+            elif choice == "7":
+                print("Exiting...")
+                break
+            else:
+                print("Invalid Input")
+    

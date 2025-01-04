@@ -1,0 +1,26 @@
+{
+    "25698": {
+        "title": "EPL",
+        "author": "Pep",
+        "isbn": "20",
+        "genre": "Fantasu=y",
+        "copies": "20",
+        "location": "Top Shelf"
+    },
+    "93128": {
+        "title": "LALIGA",
+        "author": "Mou",
+        "isbn": "234",
+        "genre": "Fantasy",
+        "copies": "20",
+        "location": "Bottom Shelf"
+    },
+    "87536": {
+        "title": "Harry Potter",
+        "author": "JK Rollings",
+        "isbn": "345",
+        "genre": "Fiction",
+        "copies": "30000",
+        "location": "Middle Shelf"
+    }
+}
