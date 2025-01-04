@@ -146,6 +146,34 @@ class BookManagementSystem:
         
         del self.books[book_id]
         print(f"Book with ID: {book_id} deleted successfully.")
+    
+    def search_book(self):
+        """Search Book From system"""
+        book_id = input("Enter book ID: ").strip()
+        if not book_id:
+            print("Book ID cannot be empty")
+            return
+        if book_id not in self.books:
+            print("Book ID not found")
+            return
         
+        print("\nEnter title or author of book: ")
+        entry = input("Enter search option: (Title or Author): ").strip()
+        if not entry:
+            print("Cannot be empty")
+            return
+        
+        matches = []
+        for idx, book in enumerate(self.books.values(), start=1):
+            if entry in book['title'].lower() or entry in book['author'].lower():
+                matches.append((idx, book))       
+        
+        if not matches:
+            print("Book not found")
+            return
+        
+        print("\nMatching Books")
+        for idx, book in matches:
+            print(f"{idx}. {book['title']}, {book['author']}") 
             
         
