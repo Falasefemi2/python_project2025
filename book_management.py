@@ -123,16 +123,16 @@ def book_system():
             print("Invalid input for location. Keeping the current value.")
             new_location = book['location']
             
-        books[book_id] = {
-            "title": new_title,
-            "author": new_author,
-            "isbn": new_isbn,
-            "genre": new_genre,
-            "copies": new_copies,
-            "location": new_location,
-        }
-        
-        print(f"Book details updated successfully for ID {book_id}.")
+            books[book_id] = {
+                "title": new_title,
+                "author": new_author,
+                "isbn": new_isbn,
+                "genre": new_genre,
+                "copies": new_copies,
+                "location": new_location,
+            }
+            
+            print(f"Book details updated successfully for ID {book_id}.")
         
     def delete_book():
         # Delete book from system
