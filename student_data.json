@@ -1,0 +1,25 @@
+{
+    "books": {
+        "BOOK2844": {
+            "title": "Book One",
+            "author": "Author A",
+            "isbn": "123456789",
+            "genre": "Fiction",
+            "copies": 4,
+            "location": "Top Shelf",
+            "added_data": "2025-01-06"
+        }
+    },
+    "users": {
+        "USER9954": {
+            "username": "Femmie",
+            "password": "Falase",
+            "role": "user",
+            "name": "Falase Femi",
+            "email": "femifalase228@gmail.com",
+            "status": "active",
+            "join_date": "2025-01-06"
+        }
+    },
+    "borrowing_records": {}
+}
