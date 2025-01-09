@@ -1,0 +1,26 @@
+Project: Internal Employee Time-Off Calendar System
+Objective: Create a system to track and manage employee vacation requests and sick leaves.
+Requirements:
+
+Build a command-line application that:
+
+Allows employees to submit time-off requests
+Shows available leave balance
+Displays team calendar view
+Sends email notifications (mock this functionality)
+
+
+
+Tech Stack:
+
+Python
+SQLite for data storage
+Basic unit tests required
+
+Timeline: 3 weeks
+Key Deliverables:
+
+Week 1: Basic CRUD operations
+Week 2: Calendar view implementation
+Week 3: Testing and documentation
+

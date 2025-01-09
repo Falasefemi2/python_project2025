@@ -1,0 +1,21 @@
+{
+    "tasks": {
+        "1": {
+            "title": "Wash cloth",
+            "description": "to wash all my cloth",
+            "due_date": "2025-01-10",
+            "priority": "High",
+            "status": "Done",
+            "created_date": "2025-01-09"
+        },
+        "2": {
+            "title": "Book a flight",
+            "description": "Book a flught to barcelona",
+            "due_date": "2025-05-25",
+            "priority": "High",
+            "status": "To Do",
+            "created_date": "2025-01-09"
+        }
+    },
+    "task_counter": 3
+}
