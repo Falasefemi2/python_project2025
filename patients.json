@@ -1,0 +1,14 @@
+[
+    {
+        "patient_id": "7089",
+        "name": "Falase femi",
+        "gender": "male",
+        "age": "24"
+    },
+    {
+        "patient_id": "2112",
+        "name": "Falase yinka",
+        "gender": "male",
+        "age": "56"
+    }
+]
